@@ -44,6 +44,19 @@ class Matrice:
         result = self.Calcul(index, st, "add") / len(line)
         return round(result,2)
 
+    def Identitaire(self):
+        final_mat = []
+        compteur = 0
+        for i in range(self.shape[1]):
+            final_mat.append([])
+            for j in range(self.shape[0]):
+                if j == compteur:
+                    final_mat[i].append(1)
+                else :
+                    final_mat[i].append(0)
+            compteur +=1
+        return Matrice(final_mat)
+
     def __CheckShape(func):
         def inner(self,other):
             if type(other) == Matrice:
@@ -150,7 +163,9 @@ MatE = Matrice([
     [2,0,3]
 ])
 
+print(MatE.Identitaire())
+
 MatK = MatD * MatE
 
 print(MatK)
-print(MatK.Average(0,"line"))
+print(MatK.Identitaire())
